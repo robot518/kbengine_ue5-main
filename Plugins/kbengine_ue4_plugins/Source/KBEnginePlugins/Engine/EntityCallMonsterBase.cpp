@@ -1,5 +1,6 @@
 #include "EntityCallMonsterBase.h"
 #include "Bundle.h"
+#include "EntityDef.h"
 
 namespace KBEngine
 {
@@ -30,7 +31,17 @@ void EntityCellEntityCall_MonsterBase::AnimUpdate(const ANIM_INFO& arg1)
 	if(!pBundleRet)
 		return;
 
-	//((DATATYPE_ANIM_INFO*)EntityDef::id2datatypes[28])->addToStreamEx(*pBundleRet, arg1);
+	((DATATYPE_ANIM_INFO*)EntityDef::id2datatypes[28])->addToStreamEx(*pBundleRet, arg1);
+	sendCall(NULL);
+}
+
+void EntityCellEntityCall_MonsterBase::HoverCarMoveSpeedUpdate(const HOVERCAR_INFO& arg1)
+{
+	Bundle* pBundleRet = newCall("HoverCarMoveSpeedUpdate", 0);
+	if(!pBundleRet)
+		return;
+
+	((DATATYPE_HOVERCAR_INFO*)EntityDef::id2datatypes[29])->addToStreamEx(*pBundleRet, arg1);
 	sendCall(NULL);
 }
 

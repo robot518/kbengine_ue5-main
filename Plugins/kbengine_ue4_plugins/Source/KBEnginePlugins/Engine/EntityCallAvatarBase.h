@@ -43,6 +43,7 @@ public:
 
 	virtual ~EntityCellEntityCall_AvatarBase();
 	void AnimUpdate(const ANIM_INFO& arg1);
+	void HoverCarMoveSpeedUpdate(const HOVERCAR_INFO& arg1);
 	void dialog(int32 arg1, uint32 arg2);
 	void jump();
 	void relive(uint8 arg1);

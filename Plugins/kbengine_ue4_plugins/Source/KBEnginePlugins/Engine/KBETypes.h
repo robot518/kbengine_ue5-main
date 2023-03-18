@@ -212,6 +212,23 @@ inline bool operator ==(const ANIM_INFO& a, const ANIM_INFO& b)
 	return a.Speed == b.Speed && a.Direction == b.Direction;
 };
 
+class HOVERCAR_INFO
+{
+public:
+	float Speed;
+
+	HOVERCAR_INFO():
+	Speed(0.0f)
+	{
+	}
+
+};
+
+inline bool operator ==(const HOVERCAR_INFO& a, const HOVERCAR_INFO& b)
+{
+	return a.Speed == b.Speed;
+};
+
 class BAG
 {
 public:

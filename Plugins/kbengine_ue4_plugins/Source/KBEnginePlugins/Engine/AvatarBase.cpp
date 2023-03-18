@@ -121,11 +121,18 @@ void AvatarBase::onRemoteMethodCall(MemoryStream& stream)
 
 	switch(pMethod->methodUtype)
 	{
-		case 10:
+		case 11:
 		{
 			ANIM_INFO OnAnimUpdate_arg1;
 			((DATATYPE_ANIM_INFO*)pMethod->args[0])->createFromStreamEx(stream, OnAnimUpdate_arg1);
 			OnAnimUpdate(OnAnimUpdate_arg1);
+			break;
+		}
+		case 12:
+		{
+			HOVERCAR_INFO OnHoverCarMoveSpeedUpdate_arg1;
+			((DATATYPE_HOVERCAR_INFO*)pMethod->args[0])->createFromStreamEx(stream, OnHoverCarMoveSpeedUpdate_arg1);
+			OnHoverCarMoveSpeedUpdate(OnHoverCarMoveSpeedUpdate_arg1);
 			break;
 		}
 		case 10101:
@@ -151,7 +158,7 @@ void AvatarBase::onRemoteMethodCall(MemoryStream& stream)
 			dialog_setText(dialog_setText_arg1, dialog_setText_arg2, dialog_setText_arg3, dialog_setText_arg4);
 			break;
 		}
-		case 14:
+		case 16:
 		{
 			int32 onAddSkill_arg1 = stream.readInt32();
 			onAddSkill(onAddSkill_arg1);
@@ -162,13 +169,13 @@ void AvatarBase::onRemoteMethodCall(MemoryStream& stream)
 			onJump();
 			break;
 		}
-		case 15:
+		case 17:
 		{
 			int32 onRemoveSkill_arg1 = stream.readInt32();
 			onRemoveSkill(onRemoveSkill_arg1);
 			break;
 		}
-		case 18:
+		case 20:
 		{
 			int32 recvDamage_arg1 = stream.readInt32();
 			int32 recvDamage_arg2 = stream.readInt32();

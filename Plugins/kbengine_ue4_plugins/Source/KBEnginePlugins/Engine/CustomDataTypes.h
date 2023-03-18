@@ -91,6 +91,14 @@ public:
 };
 
 
+class KBENGINEPLUGINS_API DATATYPE_HOVERCAR_INFO : DATATYPE_BASE
+{
+public:
+	void createFromStreamEx(MemoryStream& stream, HOVERCAR_INFO& datas);
+	void addToStreamEx(Bundle& stream, const HOVERCAR_INFO& v);
+};
+
+
 class KBENGINEPLUGINS_API DATATYPE_BAG : DATATYPE_BASE
 {
 public:
@@ -159,7 +167,7 @@ public:
 };
 
 
-class KBENGINEPLUGINS_API DATATYPE_AnonymousArray_33 : DATATYPE_BASE
+class KBENGINEPLUGINS_API DATATYPE_AnonymousArray_34 : DATATYPE_BASE
 {
 public:
 	void createFromStreamEx(MemoryStream& stream, TArray<int32>& datas);

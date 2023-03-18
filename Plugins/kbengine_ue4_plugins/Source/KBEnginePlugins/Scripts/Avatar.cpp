@@ -33,6 +33,14 @@ void Avatar::__init__()
 			AnimInfo.Direction = data.Direction;
 			pCellEntityCall->AnimUpdate(AnimInfo);
 		});
+
+		KBENGINE_REGISTER_EVENT_OVERRIDE_FUNC("HoverCarMoveSpeedUpdate", "HoverCarMoveSpeedUpdate", [this](const UKBEventData* pEventData)
+		{
+			const UKBEventData_HoverCarMoveSpeedUpdate& data = static_cast<const UKBEventData_HoverCarMoveSpeedUpdate&>(*pEventData);
+			HOVERCAR_INFO HoverCarInfo;
+			HoverCarInfo.Speed = data.Speed;
+			pCellEntityCall->HoverCarMoveSpeedUpdate(HoverCarInfo);
+		});
 	}
 }
 
@@ -104,6 +112,14 @@ void Avatar::OnAnimUpdate(const ANIM_INFO& arg1)
 	pEventData->Speed = arg1.Speed;
 	pEventData->Direction = arg1.Direction;
 	KBENGINE_EVENT_FIRE("OnAnimUpdate", pEventData);
+}
+
+void Avatar::OnHoverCarMoveSpeedUpdate(const HOVERCAR_INFO& arg1)
+{
+	UKBEventData_OnHoverCarMoveSpeedUpdate* pEventData = NewObject<UKBEventData_OnHoverCarMoveSpeedUpdate>();
+	pEventData->EntityId = id();
+	pEventData->Speed = arg1.Speed;
+	KBENGINE_EVENT_FIRE("OnHoverCarMoveSpeedUpdate", pEventData);
 }
 
 void Avatar::onHPChanged(int32 oldValue)

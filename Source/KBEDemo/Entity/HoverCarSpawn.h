@@ -82,4 +82,16 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = KBEngine)
 		bool isOnGround;
+
+	float HoverCarMoveSpeed;
+	float TargetSpeed;
+	float LastSpeed;
+	void SetTargetMoveSpeed(float Speed);
+
+	//上一次同步动作时间
+	float LastUpdateAnimTime;
+	//更新动作时间间隔
+	float UpdateAnimSpaceTime;
+	//剩余动作更新时间
+	float RemainAnimSpaceTime;
 };

@@ -348,3 +348,27 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = KBEngine)
 		float Direction;
 };
+
+UCLASS(Blueprintable, BlueprintType)
+class KBENGINEPLUGINS_API UKBEventData_OnHoverCarMoveSpeedUpdate : public UKBEventData
+{
+	GENERATED_BODY()
+
+public:
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = KBEngine)
+		int32 EntityId;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = KBEngine)
+		float Speed;
+};
+
+UCLASS(Blueprintable, BlueprintType)
+class KBENGINEPLUGINS_API UKBEventData_HoverCarMoveSpeedUpdate : public UKBEventData
+{
+	GENERATED_BODY()
+
+public:
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = KBEngine)
+		float Speed;
+};

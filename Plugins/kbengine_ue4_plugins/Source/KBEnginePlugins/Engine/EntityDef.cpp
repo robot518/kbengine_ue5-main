@@ -620,7 +620,7 @@ void EntityDef::initScriptModules()
 
 	Method* pAvatar_OnAnimUpdate = new Method();
 	pAvatar_OnAnimUpdate->name = TEXT("OnAnimUpdate");
-	pAvatar_OnAnimUpdate->methodUtype = 10;
+	pAvatar_OnAnimUpdate->methodUtype = 11;
 	pAvatar_OnAnimUpdate->aliasID = 1;
 	pAvatar_OnAnimUpdate->args = Avatar_OnAnimUpdate_args;
 
@@ -628,7 +628,22 @@ void EntityDef::initScriptModules()
 	pAvatarModule->useMethodDescrAlias = true;
 	pAvatarModule->idmethods.Add((uint16)pAvatar_OnAnimUpdate->aliasID, pAvatar_OnAnimUpdate);
 
-	//DEBUG_MSG("EntityDef::initScriptModules: add(Avatar), method(OnAnimUpdate / 10).");
+	//DEBUG_MSG("EntityDef::initScriptModules: add(Avatar), method(OnAnimUpdate / 11).");
+
+	TArray<DATATYPE_BASE*> Avatar_OnHoverCarMoveSpeedUpdate_args;
+	Avatar_OnHoverCarMoveSpeedUpdate_args.Add(EntityDef::id2datatypes[29]);
+
+	Method* pAvatar_OnHoverCarMoveSpeedUpdate = new Method();
+	pAvatar_OnHoverCarMoveSpeedUpdate->name = TEXT("OnHoverCarMoveSpeedUpdate");
+	pAvatar_OnHoverCarMoveSpeedUpdate->methodUtype = 12;
+	pAvatar_OnHoverCarMoveSpeedUpdate->aliasID = 2;
+	pAvatar_OnHoverCarMoveSpeedUpdate->args = Avatar_OnHoverCarMoveSpeedUpdate_args;
+
+	pAvatarModule->methods.Add(TEXT("OnHoverCarMoveSpeedUpdate"), pAvatar_OnHoverCarMoveSpeedUpdate); 
+	pAvatarModule->useMethodDescrAlias = true;
+	pAvatarModule->idmethods.Add((uint16)pAvatar_OnHoverCarMoveSpeedUpdate->aliasID, pAvatar_OnHoverCarMoveSpeedUpdate);
+
+	//DEBUG_MSG("EntityDef::initScriptModules: add(Avatar), method(OnHoverCarMoveSpeedUpdate / 12).");
 
 	TArray<DATATYPE_BASE*> Avatar_dialog_addOption_args;
 	Avatar_dialog_addOption_args.Add(EntityDef::id2datatypes[2]);
@@ -639,7 +654,7 @@ void EntityDef::initScriptModules()
 	Method* pAvatar_dialog_addOption = new Method();
 	pAvatar_dialog_addOption->name = TEXT("dialog_addOption");
 	pAvatar_dialog_addOption->methodUtype = 10101;
-	pAvatar_dialog_addOption->aliasID = 2;
+	pAvatar_dialog_addOption->aliasID = 3;
 	pAvatar_dialog_addOption->args = Avatar_dialog_addOption_args;
 
 	pAvatarModule->methods.Add(TEXT("dialog_addOption"), pAvatar_dialog_addOption); 
@@ -653,7 +668,7 @@ void EntityDef::initScriptModules()
 	Method* pAvatar_dialog_close = new Method();
 	pAvatar_dialog_close->name = TEXT("dialog_close");
 	pAvatar_dialog_close->methodUtype = 10104;
-	pAvatar_dialog_close->aliasID = 3;
+	pAvatar_dialog_close->aliasID = 4;
 	pAvatar_dialog_close->args = Avatar_dialog_close_args;
 
 	pAvatarModule->methods.Add(TEXT("dialog_close"), pAvatar_dialog_close); 
@@ -671,7 +686,7 @@ void EntityDef::initScriptModules()
 	Method* pAvatar_dialog_setText = new Method();
 	pAvatar_dialog_setText->name = TEXT("dialog_setText");
 	pAvatar_dialog_setText->methodUtype = 10102;
-	pAvatar_dialog_setText->aliasID = 4;
+	pAvatar_dialog_setText->aliasID = 5;
 	pAvatar_dialog_setText->args = Avatar_dialog_setText_args;
 
 	pAvatarModule->methods.Add(TEXT("dialog_setText"), pAvatar_dialog_setText); 
@@ -685,22 +700,22 @@ void EntityDef::initScriptModules()
 
 	Method* pAvatar_onAddSkill = new Method();
 	pAvatar_onAddSkill->name = TEXT("onAddSkill");
-	pAvatar_onAddSkill->methodUtype = 14;
-	pAvatar_onAddSkill->aliasID = 5;
+	pAvatar_onAddSkill->methodUtype = 16;
+	pAvatar_onAddSkill->aliasID = 6;
 	pAvatar_onAddSkill->args = Avatar_onAddSkill_args;
 
 	pAvatarModule->methods.Add(TEXT("onAddSkill"), pAvatar_onAddSkill); 
 	pAvatarModule->useMethodDescrAlias = true;
 	pAvatarModule->idmethods.Add((uint16)pAvatar_onAddSkill->aliasID, pAvatar_onAddSkill);
 
-	//DEBUG_MSG("EntityDef::initScriptModules: add(Avatar), method(onAddSkill / 14).");
+	//DEBUG_MSG("EntityDef::initScriptModules: add(Avatar), method(onAddSkill / 16).");
 
 	TArray<DATATYPE_BASE*> Avatar_onJump_args;
 
 	Method* pAvatar_onJump = new Method();
 	pAvatar_onJump->name = TEXT("onJump");
 	pAvatar_onJump->methodUtype = 7;
-	pAvatar_onJump->aliasID = 6;
+	pAvatar_onJump->aliasID = 7;
 	pAvatar_onJump->args = Avatar_onJump_args;
 
 	pAvatarModule->methods.Add(TEXT("onJump"), pAvatar_onJump); 
@@ -714,15 +729,15 @@ void EntityDef::initScriptModules()
 
 	Method* pAvatar_onRemoveSkill = new Method();
 	pAvatar_onRemoveSkill->name = TEXT("onRemoveSkill");
-	pAvatar_onRemoveSkill->methodUtype = 15;
-	pAvatar_onRemoveSkill->aliasID = 7;
+	pAvatar_onRemoveSkill->methodUtype = 17;
+	pAvatar_onRemoveSkill->aliasID = 8;
 	pAvatar_onRemoveSkill->args = Avatar_onRemoveSkill_args;
 
 	pAvatarModule->methods.Add(TEXT("onRemoveSkill"), pAvatar_onRemoveSkill); 
 	pAvatarModule->useMethodDescrAlias = true;
 	pAvatarModule->idmethods.Add((uint16)pAvatar_onRemoveSkill->aliasID, pAvatar_onRemoveSkill);
 
-	//DEBUG_MSG("EntityDef::initScriptModules: add(Avatar), method(onRemoveSkill / 15).");
+	//DEBUG_MSG("EntityDef::initScriptModules: add(Avatar), method(onRemoveSkill / 17).");
 
 	TArray<DATATYPE_BASE*> Avatar_recvDamage_args;
 	Avatar_recvDamage_args.Add(EntityDef::id2datatypes[8]);
@@ -732,15 +747,15 @@ void EntityDef::initScriptModules()
 
 	Method* pAvatar_recvDamage = new Method();
 	pAvatar_recvDamage->name = TEXT("recvDamage");
-	pAvatar_recvDamage->methodUtype = 18;
-	pAvatar_recvDamage->aliasID = 8;
+	pAvatar_recvDamage->methodUtype = 20;
+	pAvatar_recvDamage->aliasID = 9;
 	pAvatar_recvDamage->args = Avatar_recvDamage_args;
 
 	pAvatarModule->methods.Add(TEXT("recvDamage"), pAvatar_recvDamage); 
 	pAvatarModule->useMethodDescrAlias = true;
 	pAvatarModule->idmethods.Add((uint16)pAvatar_recvDamage->aliasID, pAvatar_recvDamage);
 
-	//DEBUG_MSG("EntityDef::initScriptModules: add(Avatar), method(recvDamage / 18).");
+	//DEBUG_MSG("EntityDef::initScriptModules: add(Avatar), method(recvDamage / 20).");
 
 	TArray<DATATYPE_BASE*> Avatar_AnimUpdate_args;
 	Avatar_AnimUpdate_args.Add(EntityDef::id2datatypes[28]);
@@ -757,6 +772,22 @@ void EntityDef::initScriptModules()
 	pAvatarModule->idcell_methods.Add(pAvatar_AnimUpdate->methodUtype, pAvatar_AnimUpdate);
 
 	//DEBUG_MSG("EntityDef::initScriptModules: add(Avatar), method(AnimUpdate / 9).");
+
+	TArray<DATATYPE_BASE*> Avatar_HoverCarMoveSpeedUpdate_args;
+	Avatar_HoverCarMoveSpeedUpdate_args.Add(EntityDef::id2datatypes[29]);
+
+	Method* pAvatar_HoverCarMoveSpeedUpdate = new Method();
+	pAvatar_HoverCarMoveSpeedUpdate->name = TEXT("HoverCarMoveSpeedUpdate");
+	pAvatar_HoverCarMoveSpeedUpdate->methodUtype = 10;
+	pAvatar_HoverCarMoveSpeedUpdate->aliasID = -1;
+	pAvatar_HoverCarMoveSpeedUpdate->args = Avatar_HoverCarMoveSpeedUpdate_args;
+
+	pAvatarModule->methods.Add(TEXT("HoverCarMoveSpeedUpdate"), pAvatar_HoverCarMoveSpeedUpdate); 
+	pAvatarModule->cell_methods.Add(TEXT("HoverCarMoveSpeedUpdate"), pAvatar_HoverCarMoveSpeedUpdate);
+
+	pAvatarModule->idcell_methods.Add(pAvatar_HoverCarMoveSpeedUpdate->methodUtype, pAvatar_HoverCarMoveSpeedUpdate);
+
+	//DEBUG_MSG("EntityDef::initScriptModules: add(Avatar), method(HoverCarMoveSpeedUpdate / 10).");
 
 	TArray<DATATYPE_BASE*> Avatar_dialog_args;
 	Avatar_dialog_args.Add(EntityDef::id2datatypes[8]);
@@ -810,7 +841,7 @@ void EntityDef::initScriptModules()
 
 	Method* pAvatar_requestPull = new Method();
 	pAvatar_requestPull->name = TEXT("requestPull");
-	pAvatar_requestPull->methodUtype = 13;
+	pAvatar_requestPull->methodUtype = 15;
 	pAvatar_requestPull->aliasID = -1;
 	pAvatar_requestPull->args = Avatar_requestPull_args;
 
@@ -819,7 +850,7 @@ void EntityDef::initScriptModules()
 
 	pAvatarModule->idcell_methods.Add(pAvatar_requestPull->methodUtype, pAvatar_requestPull);
 
-	//DEBUG_MSG("EntityDef::initScriptModules: add(Avatar), method(requestPull / 13).");
+	//DEBUG_MSG("EntityDef::initScriptModules: add(Avatar), method(requestPull / 15).");
 
 	TArray<DATATYPE_BASE*> Avatar_useTargetSkill_args;
 	Avatar_useTargetSkill_args.Add(EntityDef::id2datatypes[8]);
@@ -917,7 +948,7 @@ void EntityDef::initScriptModules()
 
 	Method* pTest_helloCB = new Method();
 	pTest_helloCB->name = TEXT("helloCB");
-	pTest_helloCB->methodUtype = 30;
+	pTest_helloCB->methodUtype = 32;
 	pTest_helloCB->aliasID = 1;
 	pTest_helloCB->args = Test_helloCB_args;
 
@@ -925,14 +956,14 @@ void EntityDef::initScriptModules()
 	pTestModule->useMethodDescrAlias = true;
 	pTestModule->idmethods.Add((uint16)pTest_helloCB->aliasID, pTest_helloCB);
 
-	//DEBUG_MSG("EntityDef::initScriptModules: add(Test), method(helloCB / 30).");
+	//DEBUG_MSG("EntityDef::initScriptModules: add(Test), method(helloCB / 32).");
 
 	TArray<DATATYPE_BASE*> Test_say_args;
 	Test_say_args.Add(EntityDef::id2datatypes[8]);
 
 	Method* pTest_say = new Method();
 	pTest_say->name = TEXT("say");
-	pTest_say->methodUtype = 29;
+	pTest_say->methodUtype = 31;
 	pTest_say->aliasID = -1;
 	pTest_say->args = Test_say_args;
 
@@ -941,14 +972,14 @@ void EntityDef::initScriptModules()
 
 	pTestModule->idbase_methods.Add(pTest_say->methodUtype, pTest_say);
 
-	//DEBUG_MSG("EntityDef::initScriptModules: add(Test), method(say / 29).");
+	//DEBUG_MSG("EntityDef::initScriptModules: add(Test), method(say / 31).");
 
 	TArray<DATATYPE_BASE*> Test_hello_args;
 	Test_hello_args.Add(EntityDef::id2datatypes[8]);
 
 	Method* pTest_hello = new Method();
 	pTest_hello->name = TEXT("hello");
-	pTest_hello->methodUtype = 28;
+	pTest_hello->methodUtype = 30;
 	pTest_hello->aliasID = -1;
 	pTest_hello->args = Test_hello_args;
 
@@ -957,7 +988,7 @@ void EntityDef::initScriptModules()
 
 	pTestModule->idcell_methods.Add(pTest_hello->methodUtype, pTest_hello);
 
-	//DEBUG_MSG("EntityDef::initScriptModules: add(Test), method(hello / 28).");
+	//DEBUG_MSG("EntityDef::initScriptModules: add(Test), method(hello / 30).");
 
 	ScriptModule* pTestNoBaseModule = new ScriptModule("TestNoBase", 4);
 	EntityDef::moduledefs.Add(TEXT("TestNoBase"), pTestNoBaseModule);
@@ -1038,7 +1069,7 @@ void EntityDef::initScriptModules()
 
 	Method* pTestNoBase_helloCB = new Method();
 	pTestNoBase_helloCB->name = TEXT("helloCB");
-	pTestNoBase_helloCB->methodUtype = 32;
+	pTestNoBase_helloCB->methodUtype = 34;
 	pTestNoBase_helloCB->aliasID = 1;
 	pTestNoBase_helloCB->args = TestNoBase_helloCB_args;
 
@@ -1046,14 +1077,14 @@ void EntityDef::initScriptModules()
 	pTestNoBaseModule->useMethodDescrAlias = true;
 	pTestNoBaseModule->idmethods.Add((uint16)pTestNoBase_helloCB->aliasID, pTestNoBase_helloCB);
 
-	//DEBUG_MSG("EntityDef::initScriptModules: add(TestNoBase), method(helloCB / 32).");
+	//DEBUG_MSG("EntityDef::initScriptModules: add(TestNoBase), method(helloCB / 34).");
 
 	TArray<DATATYPE_BASE*> TestNoBase_hello_args;
 	TestNoBase_hello_args.Add(EntityDef::id2datatypes[8]);
 
 	Method* pTestNoBase_hello = new Method();
 	pTestNoBase_hello->name = TEXT("hello");
-	pTestNoBase_hello->methodUtype = 31;
+	pTestNoBase_hello->methodUtype = 33;
 	pTestNoBase_hello->aliasID = -1;
 	pTestNoBase_hello->args = TestNoBase_hello_args;
 
@@ -1062,7 +1093,7 @@ void EntityDef::initScriptModules()
 
 	pTestNoBaseModule->idcell_methods.Add(pTestNoBase_hello->methodUtype, pTestNoBase_hello);
 
-	//DEBUG_MSG("EntityDef::initScriptModules: add(TestNoBase), method(hello / 31).");
+	//DEBUG_MSG("EntityDef::initScriptModules: add(TestNoBase), method(hello / 33).");
 
 	ScriptModule* pMonsterModule = new ScriptModule("Monster", 5);
 	EntityDef::moduledefs.Add(TEXT("Monster"), pMonsterModule);
@@ -1311,7 +1342,7 @@ void EntityDef::initScriptModules()
 
 	Method* pMonster_OnAnimUpdate = new Method();
 	pMonster_OnAnimUpdate->name = TEXT("OnAnimUpdate");
-	pMonster_OnAnimUpdate->methodUtype = 35;
+	pMonster_OnAnimUpdate->methodUtype = 38;
 	pMonster_OnAnimUpdate->aliasID = 1;
 	pMonster_OnAnimUpdate->args = Monster_OnAnimUpdate_args;
 
@@ -1319,7 +1350,22 @@ void EntityDef::initScriptModules()
 	pMonsterModule->useMethodDescrAlias = true;
 	pMonsterModule->idmethods.Add((uint16)pMonster_OnAnimUpdate->aliasID, pMonster_OnAnimUpdate);
 
-	//DEBUG_MSG("EntityDef::initScriptModules: add(Monster), method(OnAnimUpdate / 35).");
+	//DEBUG_MSG("EntityDef::initScriptModules: add(Monster), method(OnAnimUpdate / 38).");
+
+	TArray<DATATYPE_BASE*> Monster_OnHoverCarMoveSpeedUpdate_args;
+	Monster_OnHoverCarMoveSpeedUpdate_args.Add(EntityDef::id2datatypes[29]);
+
+	Method* pMonster_OnHoverCarMoveSpeedUpdate = new Method();
+	pMonster_OnHoverCarMoveSpeedUpdate->name = TEXT("OnHoverCarMoveSpeedUpdate");
+	pMonster_OnHoverCarMoveSpeedUpdate->methodUtype = 39;
+	pMonster_OnHoverCarMoveSpeedUpdate->aliasID = 2;
+	pMonster_OnHoverCarMoveSpeedUpdate->args = Monster_OnHoverCarMoveSpeedUpdate_args;
+
+	pMonsterModule->methods.Add(TEXT("OnHoverCarMoveSpeedUpdate"), pMonster_OnHoverCarMoveSpeedUpdate); 
+	pMonsterModule->useMethodDescrAlias = true;
+	pMonsterModule->idmethods.Add((uint16)pMonster_OnHoverCarMoveSpeedUpdate->aliasID, pMonster_OnHoverCarMoveSpeedUpdate);
+
+	//DEBUG_MSG("EntityDef::initScriptModules: add(Monster), method(OnHoverCarMoveSpeedUpdate / 39).");
 
 	TArray<DATATYPE_BASE*> Monster_recvDamage_args;
 	Monster_recvDamage_args.Add(EntityDef::id2datatypes[8]);
@@ -1329,22 +1375,22 @@ void EntityDef::initScriptModules()
 
 	Method* pMonster_recvDamage = new Method();
 	pMonster_recvDamage->name = TEXT("recvDamage");
-	pMonster_recvDamage->methodUtype = 38;
-	pMonster_recvDamage->aliasID = 2;
+	pMonster_recvDamage->methodUtype = 42;
+	pMonster_recvDamage->aliasID = 3;
 	pMonster_recvDamage->args = Monster_recvDamage_args;
 
 	pMonsterModule->methods.Add(TEXT("recvDamage"), pMonster_recvDamage); 
 	pMonsterModule->useMethodDescrAlias = true;
 	pMonsterModule->idmethods.Add((uint16)pMonster_recvDamage->aliasID, pMonster_recvDamage);
 
-	//DEBUG_MSG("EntityDef::initScriptModules: add(Monster), method(recvDamage / 38).");
+	//DEBUG_MSG("EntityDef::initScriptModules: add(Monster), method(recvDamage / 42).");
 
 	TArray<DATATYPE_BASE*> Monster_AnimUpdate_args;
 	Monster_AnimUpdate_args.Add(EntityDef::id2datatypes[28]);
 
 	Method* pMonster_AnimUpdate = new Method();
 	pMonster_AnimUpdate->name = TEXT("AnimUpdate");
-	pMonster_AnimUpdate->methodUtype = 34;
+	pMonster_AnimUpdate->methodUtype = 36;
 	pMonster_AnimUpdate->aliasID = -1;
 	pMonster_AnimUpdate->args = Monster_AnimUpdate_args;
 
@@ -1353,7 +1399,23 @@ void EntityDef::initScriptModules()
 
 	pMonsterModule->idcell_methods.Add(pMonster_AnimUpdate->methodUtype, pMonster_AnimUpdate);
 
-	//DEBUG_MSG("EntityDef::initScriptModules: add(Monster), method(AnimUpdate / 34).");
+	//DEBUG_MSG("EntityDef::initScriptModules: add(Monster), method(AnimUpdate / 36).");
+
+	TArray<DATATYPE_BASE*> Monster_HoverCarMoveSpeedUpdate_args;
+	Monster_HoverCarMoveSpeedUpdate_args.Add(EntityDef::id2datatypes[29]);
+
+	Method* pMonster_HoverCarMoveSpeedUpdate = new Method();
+	pMonster_HoverCarMoveSpeedUpdate->name = TEXT("HoverCarMoveSpeedUpdate");
+	pMonster_HoverCarMoveSpeedUpdate->methodUtype = 37;
+	pMonster_HoverCarMoveSpeedUpdate->aliasID = -1;
+	pMonster_HoverCarMoveSpeedUpdate->args = Monster_HoverCarMoveSpeedUpdate_args;
+
+	pMonsterModule->methods.Add(TEXT("HoverCarMoveSpeedUpdate"), pMonster_HoverCarMoveSpeedUpdate); 
+	pMonsterModule->cell_methods.Add(TEXT("HoverCarMoveSpeedUpdate"), pMonster_HoverCarMoveSpeedUpdate);
+
+	pMonsterModule->idcell_methods.Add(pMonster_HoverCarMoveSpeedUpdate->methodUtype, pMonster_HoverCarMoveSpeedUpdate);
+
+	//DEBUG_MSG("EntityDef::initScriptModules: add(Monster), method(HoverCarMoveSpeedUpdate / 37).");
 
 	ScriptModule* pNPCModule = new ScriptModule("NPC", 6);
 	EntityDef::moduledefs.Add(TEXT("NPC"), pNPCModule);
@@ -1504,7 +1566,7 @@ void EntityDef::initScriptModules()
 
 	Method* pNPC_OnAnimUpdate = new Method();
 	pNPC_OnAnimUpdate->name = TEXT("OnAnimUpdate");
-	pNPC_OnAnimUpdate->methodUtype = 47;
+	pNPC_OnAnimUpdate->methodUtype = 52;
 	pNPC_OnAnimUpdate->aliasID = 1;
 	pNPC_OnAnimUpdate->args = NPC_OnAnimUpdate_args;
 
@@ -1512,14 +1574,29 @@ void EntityDef::initScriptModules()
 	pNPCModule->useMethodDescrAlias = true;
 	pNPCModule->idmethods.Add((uint16)pNPC_OnAnimUpdate->aliasID, pNPC_OnAnimUpdate);
 
-	//DEBUG_MSG("EntityDef::initScriptModules: add(NPC), method(OnAnimUpdate / 47).");
+	//DEBUG_MSG("EntityDef::initScriptModules: add(NPC), method(OnAnimUpdate / 52).");
+
+	TArray<DATATYPE_BASE*> NPC_OnHoverCarMoveSpeedUpdate_args;
+	NPC_OnHoverCarMoveSpeedUpdate_args.Add(EntityDef::id2datatypes[29]);
+
+	Method* pNPC_OnHoverCarMoveSpeedUpdate = new Method();
+	pNPC_OnHoverCarMoveSpeedUpdate->name = TEXT("OnHoverCarMoveSpeedUpdate");
+	pNPC_OnHoverCarMoveSpeedUpdate->methodUtype = 53;
+	pNPC_OnHoverCarMoveSpeedUpdate->aliasID = 2;
+	pNPC_OnHoverCarMoveSpeedUpdate->args = NPC_OnHoverCarMoveSpeedUpdate_args;
+
+	pNPCModule->methods.Add(TEXT("OnHoverCarMoveSpeedUpdate"), pNPC_OnHoverCarMoveSpeedUpdate); 
+	pNPCModule->useMethodDescrAlias = true;
+	pNPCModule->idmethods.Add((uint16)pNPC_OnHoverCarMoveSpeedUpdate->aliasID, pNPC_OnHoverCarMoveSpeedUpdate);
+
+	//DEBUG_MSG("EntityDef::initScriptModules: add(NPC), method(OnHoverCarMoveSpeedUpdate / 53).");
 
 	TArray<DATATYPE_BASE*> NPC_AnimUpdate_args;
 	NPC_AnimUpdate_args.Add(EntityDef::id2datatypes[28]);
 
 	Method* pNPC_AnimUpdate = new Method();
 	pNPC_AnimUpdate->name = TEXT("AnimUpdate");
-	pNPC_AnimUpdate->methodUtype = 46;
+	pNPC_AnimUpdate->methodUtype = 50;
 	pNPC_AnimUpdate->aliasID = -1;
 	pNPC_AnimUpdate->args = NPC_AnimUpdate_args;
 
@@ -1528,7 +1605,23 @@ void EntityDef::initScriptModules()
 
 	pNPCModule->idcell_methods.Add(pNPC_AnimUpdate->methodUtype, pNPC_AnimUpdate);
 
-	//DEBUG_MSG("EntityDef::initScriptModules: add(NPC), method(AnimUpdate / 46).");
+	//DEBUG_MSG("EntityDef::initScriptModules: add(NPC), method(AnimUpdate / 50).");
+
+	TArray<DATATYPE_BASE*> NPC_HoverCarMoveSpeedUpdate_args;
+	NPC_HoverCarMoveSpeedUpdate_args.Add(EntityDef::id2datatypes[29]);
+
+	Method* pNPC_HoverCarMoveSpeedUpdate = new Method();
+	pNPC_HoverCarMoveSpeedUpdate->name = TEXT("HoverCarMoveSpeedUpdate");
+	pNPC_HoverCarMoveSpeedUpdate->methodUtype = 51;
+	pNPC_HoverCarMoveSpeedUpdate->aliasID = -1;
+	pNPC_HoverCarMoveSpeedUpdate->args = NPC_HoverCarMoveSpeedUpdate_args;
+
+	pNPCModule->methods.Add(TEXT("HoverCarMoveSpeedUpdate"), pNPC_HoverCarMoveSpeedUpdate); 
+	pNPCModule->cell_methods.Add(TEXT("HoverCarMoveSpeedUpdate"), pNPC_HoverCarMoveSpeedUpdate);
+
+	pNPCModule->idcell_methods.Add(pNPC_HoverCarMoveSpeedUpdate->methodUtype, pNPC_HoverCarMoveSpeedUpdate);
+
+	//DEBUG_MSG("EntityDef::initScriptModules: add(NPC), method(HoverCarMoveSpeedUpdate / 51).");
 
 	ScriptModule* pGateModule = new ScriptModule("Gate", 7);
 	EntityDef::moduledefs.Add(TEXT("Gate"), pGateModule);
@@ -1952,6 +2045,15 @@ void EntityDef::initDefTypes()
 
 	{
 		uint16 utype = 29;
+		FString typeName = TEXT("HOVERCAR_INFO");
+		DATATYPE_HOVERCAR_INFO* pDatatype = new DATATYPE_HOVERCAR_INFO();
+		EntityDef::datatypes.Add(typeName, (DATATYPE_BASE*)pDatatype);
+		EntityDef::id2datatypes.Add(utype, EntityDef::datatypes[typeName]);
+		EntityDef::datatype2id.Add(typeName, utype);
+	}
+
+	{
+		uint16 utype = 30;
 		FString typeName = TEXT("BAG");
 		DATATYPE_BAG* pDatatype = new DATATYPE_BAG();
 		EntityDef::datatypes.Add(typeName, (DATATYPE_BASE*)pDatatype);
@@ -1960,7 +2062,7 @@ void EntityDef::initDefTypes()
 	}
 
 	{
-		uint16 utype = 32;
+		uint16 utype = 33;
 		FString typeName = TEXT("EXAMPLES");
 		DATATYPE_EXAMPLES* pDatatype = new DATATYPE_EXAMPLES();
 		EntityDef::datatypes.Add(typeName, (DATATYPE_BASE*)pDatatype);
@@ -1969,21 +2071,10 @@ void EntityDef::initDefTypes()
 	}
 
 	{
-		uint16 utype = 33;
-		FString typeName = TEXT("AnonymousArray_33");
-		DATATYPE_AnonymousArray_33* pDatatype = new DATATYPE_AnonymousArray_33();
-		EntityDef::datatypes.Add(typeName, (DATATYPE_BASE*)pDatatype);
-		EntityDef::id2datatypes.Add(utype, EntityDef::datatypes[typeName]);
-		EntityDef::datatype2id.Add(typeName, utype);
-	}
-
-	{
 		uint16 utype = 34;
 		FString typeName = TEXT("AnonymousArray_34");
-		FString name = TEXT("ENTITY_COMPONENT");
-		DATATYPE_BASE** fPtr = EntityDef::datatypes.Find(name);
-		DATATYPE_BASE* pVal = fPtr != NULL ? *fPtr : NULL;
-		EntityDef::datatypes.Add(typeName, pVal);
+		DATATYPE_AnonymousArray_34* pDatatype = new DATATYPE_AnonymousArray_34();
+		EntityDef::datatypes.Add(typeName, (DATATYPE_BASE*)pDatatype);
 		EntityDef::id2datatypes.Add(utype, EntityDef::datatypes[typeName]);
 		EntityDef::datatype2id.Add(typeName, utype);
 	}
@@ -2002,6 +2093,17 @@ void EntityDef::initDefTypes()
 	{
 		uint16 utype = 36;
 		FString typeName = TEXT("AnonymousArray_36");
+		FString name = TEXT("ENTITY_COMPONENT");
+		DATATYPE_BASE** fPtr = EntityDef::datatypes.Find(name);
+		DATATYPE_BASE* pVal = fPtr != NULL ? *fPtr : NULL;
+		EntityDef::datatypes.Add(typeName, pVal);
+		EntityDef::id2datatypes.Add(utype, EntityDef::datatypes[typeName]);
+		EntityDef::datatype2id.Add(typeName, utype);
+	}
+
+	{
+		uint16 utype = 37;
+		FString typeName = TEXT("AnonymousArray_37");
 		FString name = TEXT("ENTITY_COMPONENT");
 		DATATYPE_BASE** fPtr = EntityDef::datatypes.Find(name);
 		DATATYPE_BASE* pVal = fPtr != NULL ? *fPtr : NULL;

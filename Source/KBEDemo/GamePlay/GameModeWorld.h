@@ -182,8 +182,9 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "KBEngine")
 		void removeCarEntity(int entityID);
 
-	UFUNCTION(BlueprintCallable, Category = "KBEngine")
-		void OnAnimUpdate(const UKBEventData* EventData);
+	void OnAnimUpdate(const UKBEventData* EventData);
+
+	void OnHoverCarMoveSpeedUpdate(const UKBEventData* EventData);
 
 	TMap<ENTITY_ID, AGameEntity*> gameEntities;
 

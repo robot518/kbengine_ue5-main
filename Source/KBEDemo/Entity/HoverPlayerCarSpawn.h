@@ -35,4 +35,13 @@ public:
 	virtual void setModelID(int sub_modelID) override {
 		this->modelID = sub_modelID;
 	}
+
+	FTimerHandle MoveUpdateHandle;
+
+	void MoveUpdate();
+
+	UFUNCTION(BlueprintCallable, Category = "KBEngine")
+	void SetHoverCarSpeed(float speed) {
+		HoverCarMoveSpeed = speed;
+	}
 };

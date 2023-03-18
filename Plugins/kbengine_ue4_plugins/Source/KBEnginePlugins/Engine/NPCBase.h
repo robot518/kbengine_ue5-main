@@ -42,6 +42,7 @@ public:
 	virtual void onUtypeChanged(uint32 oldValue) {}
 
 	virtual void OnAnimUpdate(const ANIM_INFO& arg1) = 0; 
+	virtual void OnHoverCarMoveSpeedUpdate(const HOVERCAR_INFO& arg1) = 0; 
 
 	void onComponentsEnterworld() override;
 	void onComponentsLeaveworld() override;

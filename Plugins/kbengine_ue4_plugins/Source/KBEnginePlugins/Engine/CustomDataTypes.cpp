@@ -99,6 +99,16 @@ void DATATYPE_ANIM_INFO::addToStreamEx(Bundle& stream, const ANIM_INFO& v)
 	stream.writeFloat(v.Direction);
 }
 
+void DATATYPE_HOVERCAR_INFO::createFromStreamEx(MemoryStream& stream, HOVERCAR_INFO& datas)
+{
+	datas.Speed = stream.readFloat();
+}
+
+void DATATYPE_HOVERCAR_INFO::addToStreamEx(Bundle& stream, const HOVERCAR_INFO& v)
+{
+	stream.writeFloat(v.Speed);
+}
+
 void DATATYPE_BAG::createFromStreamEx(MemoryStream& stream, BAG& datas)
 {
 	values22_DataType.createFromStreamEx(stream, datas.values22);
@@ -121,7 +131,7 @@ void DATATYPE_EXAMPLES::addToStreamEx(Bundle& stream, const EXAMPLES& v)
 	stream.writeInt64(v.k2);
 }
 
-void DATATYPE_AnonymousArray_33::createFromStreamEx(MemoryStream& stream, TArray<int32>& datas)
+void DATATYPE_AnonymousArray_34::createFromStreamEx(MemoryStream& stream, TArray<int32>& datas)
 {
 	uint32 size = stream.readUint32();
 	while(size > 0)
@@ -132,7 +142,7 @@ void DATATYPE_AnonymousArray_33::createFromStreamEx(MemoryStream& stream, TArray
 
 }
 
-void DATATYPE_AnonymousArray_33::addToStreamEx(Bundle& stream, const TArray<int32>& v)
+void DATATYPE_AnonymousArray_34::addToStreamEx(Bundle& stream, const TArray<int32>& v)
 {
 	stream.writeUint32((uint32)v.Num());
 	for(int i=0; i<v.Num(); ++i)

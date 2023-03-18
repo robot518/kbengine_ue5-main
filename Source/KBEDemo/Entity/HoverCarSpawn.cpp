@@ -27,6 +27,8 @@ void AHoverCarSpawn::BeginPlay()
 		XGameMode->addHoverCarEntity(this->entityID, this);
 		KBEngine::Entity* pEntity = KBEngine::KBEngineApp::getSingleton().findEntity(entityID);
 
+		LastUpdateAnimTime = GetWorld()->TimeSeconds;
+
 		// 由于UE4可视化实体创建要晚于KBE的插件的逻辑实体，而KBE插件实体先前可能已经触发了一些属性设置事件
 		// 因此此时我们可能已经错过了一些事件，我们只能在此补救必要的触发了， 例如：名称和血量属性值
 		if (pEntity)
@@ -54,7 +56,13 @@ void AHoverCarSpawn::updateLocation(float DeltaTime)
 	//Direction from Self to targetPos
 	FVector vectorDirection = targetLocation - currLocation;
 
-	float deltaSpeed = (moveSpeed * 10.f /*由于服务端脚本moveSpeed的单位是厘米，这里需要转换为UE4单位毫米*/) * DeltaTime;
+	//float deltaSpeed = (moveSpeed * 10.f /*由于服务端脚本moveSpeed的单位是厘米，这里需要转换为UE4单位毫米*/) * DeltaTime;
+
+	RemainAnimSpaceTime -= DeltaTime * 5;
+	float AnimLerpPercent = FMath::Clamp(RemainAnimSpaceTime / UpdateAnimSpaceTime, 0.f, 1.f);
+	HoverCarMoveSpeed = FMath::Lerp(TargetSpeed, LastSpeed, AnimLerpPercent);
+	float deltaSpeed = HoverCarMoveSpeed * DeltaTime;
+
 	if (vectorDirection.Size() > deltaSpeed)
 	{
 		//Normalize Vector so it is just a direction
@@ -98,5 +106,15 @@ void AHoverCarSpawn::FaceRotation(FRotator NewRotation, float DeltaTime)
 void AHoverCarSpawn::setModelID(int sub_modelID)
 {
 	this->modelID = sub_modelID;
+}
+
+void AHoverCarSpawn::SetTargetMoveSpeed(float Speed)
+{
+	TargetSpeed = Speed;
+	LastSpeed = HoverCarMoveSpeed;
+
+	UpdateAnimSpaceTime = GetWorld()->TimeSeconds - LastUpdateAnimTime;
+	RemainAnimSpaceTime = UpdateAnimSpaceTime;
+	LastUpdateAnimTime = GetWorld()->TimeSeconds;
 }
 

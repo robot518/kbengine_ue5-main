@@ -89,11 +89,18 @@ void NPCBase::onRemoteMethodCall(MemoryStream& stream)
 
 	switch(pMethod->methodUtype)
 	{
-		case 47:
+		case 52:
 		{
 			ANIM_INFO OnAnimUpdate_arg1;
 			((DATATYPE_ANIM_INFO*)pMethod->args[0])->createFromStreamEx(stream, OnAnimUpdate_arg1);
 			OnAnimUpdate(OnAnimUpdate_arg1);
+			break;
+		}
+		case 53:
+		{
+			HOVERCAR_INFO OnHoverCarMoveSpeedUpdate_arg1;
+			((DATATYPE_HOVERCAR_INFO*)pMethod->args[0])->createFromStreamEx(stream, OnHoverCarMoveSpeedUpdate_arg1);
+			OnHoverCarMoveSpeedUpdate(OnHoverCarMoveSpeedUpdate_arg1);
 			break;
 		}
 		default:

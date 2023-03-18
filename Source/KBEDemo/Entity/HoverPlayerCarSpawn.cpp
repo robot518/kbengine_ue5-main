@@ -1,4 +1,5 @@
 ﻿#include "HoverPlayerCarSpawn.h"
+#include <KBEnginePlugins\Scripts\LogicEvents.h>
 
 // 设置默认值
 AHoverPlayerCarSpawn::AHoverPlayerCarSpawn()
@@ -11,11 +12,14 @@ AHoverPlayerCarSpawn::AHoverPlayerCarSpawn()
 void AHoverPlayerCarSpawn::BeginPlay()
 {
 	Super::BeginPlay();
+
+	GetWorld()->GetTimerManager().SetTimer(MoveUpdateHandle, this, &AHoverPlayerCarSpawn::MoveUpdate, 0.5f, true, 0.5f);
 }
 
 void AHoverPlayerCarSpawn::Destroyed()
 {
 	Super::Destroyed();
+	GetWorld()->GetTimerManager().ClearTimer(MoveUpdateHandle);
 }
 
 // 已调用每个帧
@@ -28,5 +32,12 @@ void AHoverPlayerCarSpawn::Tick(float DeltaTime)
 void AHoverPlayerCarSpawn::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
+}
+
+void AHoverPlayerCarSpawn::MoveUpdate()
+{
+	UKBEventData_HoverCarMoveSpeedUpdate* data = NewObject<UKBEventData_HoverCarMoveSpeedUpdate>();
+	data->Speed = HoverCarMoveSpeed;
+	KBENGINE_EVENT_FIRE("HoverCarMoveSpeedUpdate", data);
 }
 

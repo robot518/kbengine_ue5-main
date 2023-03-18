@@ -35,6 +35,7 @@ public:
 
 	virtual ~EntityCellEntityCall_NPCBase();
 	void AnimUpdate(const ANIM_INFO& arg1);
+	void HoverCarMoveSpeedUpdate(const HOVERCAR_INFO& arg1);
 };
 
 }

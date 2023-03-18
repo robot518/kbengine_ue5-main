@@ -59,6 +59,16 @@ void EntityCellEntityCall_AvatarBase::AnimUpdate(const ANIM_INFO& arg1)
 	sendCall(NULL);
 }
 
+void EntityCellEntityCall_AvatarBase::HoverCarMoveSpeedUpdate(const HOVERCAR_INFO& arg1)
+{
+	Bundle* pBundleRet = newCall("HoverCarMoveSpeedUpdate", 0);
+	if(!pBundleRet)
+		return;
+
+	((DATATYPE_HOVERCAR_INFO*)EntityDef::id2datatypes[29])->addToStreamEx(*pBundleRet, arg1);
+	sendCall(NULL);
+}
+
 void EntityCellEntityCall_AvatarBase::dialog(int32 arg1, uint32 arg2)
 {
 	Bundle* pBundleRet = newCall("dialog", 0);
