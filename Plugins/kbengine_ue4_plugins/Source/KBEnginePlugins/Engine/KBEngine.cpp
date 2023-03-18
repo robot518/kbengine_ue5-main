@@ -40,7 +40,7 @@ KBEngineApp::KBEngineApp() :
 	serverScriptVersion_(TEXT("")),
 	clientScriptVersion_(TEXT("")),
 	serverProtocolMD5_(TEXT("EB8AE9F114C8797B1E70E1A629686A27")),
-	serverEntitydefMD5_(TEXT("363BB7D9C7C9010E5779213C13D38542")),
+	serverEntitydefMD5_(TEXT("DFC572F8F953ECB112CEDB49A26A9F08")),
 	entity_uuid_(0),
 	entity_id_(0),
 	entity_type_(TEXT("")),
@@ -83,7 +83,7 @@ KBEngineApp::KBEngineApp(KBEngineArgs* pArgs):
 	serverScriptVersion_(TEXT("")),
 	clientScriptVersion_(TEXT("")),
 	serverProtocolMD5_(TEXT("EB8AE9F114C8797B1E70E1A629686A27")),
-	serverEntitydefMD5_(TEXT("363BB7D9C7C9010E5779213C13D38542")),
+	serverEntitydefMD5_(TEXT("DFC572F8F953ECB112CEDB49A26A9F08")),
 	entity_uuid_(0),
 	entity_id_(0),
 	entity_type_(TEXT("")),
@@ -539,7 +539,7 @@ void KBEngineApp::Client_onHelloCB(MemoryStream& stream)
 		}
 		*/
 
-		/*if(serverEntitydefMD5_ != serverEntitydefMD5)
+		if(serverEntitydefMD5_ != serverEntitydefMD5)
 		{
 			ERROR_MSG("KBEngineApp::Client_onHelloCB():  digest not match! serverEntitydefMD5=%s(server: %s)", *serverEntitydefMD5_, *serverEntitydefMD5);
 
@@ -548,7 +548,7 @@ void KBEngineApp::Client_onHelloCB(MemoryStream& stream)
 			pEventData->serverVersion = serverVersion_;
 			KBENGINE_EVENT_FIRE(KBEventTypes::onVersionNotMatch, pEventData);
 			return;
-		}*/
+		}
 	}
 
 	if (pArgs_->networkEncryptType == NETWORK_ENCRYPT_TYPE::ENCRYPT_TYPE_BLOWFISH)

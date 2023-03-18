@@ -56,6 +56,49 @@ EntityCall* NPCBase::getCellEntityCall()
 
 void NPCBase::onRemoteMethodCall(MemoryStream& stream)
 {
+	ScriptModule* sm = *EntityDef::moduledefs.Find("NPC");
+	uint16 methodUtype = 0;
+	uint16 componentPropertyUType = 0;
+
+	if (sm->usePropertyDescrAlias)
+	{
+		componentPropertyUType = stream.readUint8();
+	}
+	else
+	{
+		componentPropertyUType = stream.readUint16();
+	}
+
+	if (sm->useMethodDescrAlias)
+	{
+		methodUtype = stream.read<uint8>();
+	}
+	else
+	{
+		methodUtype = stream.read<uint16>();
+	}
+
+	if(componentPropertyUType > 0)
+	{
+		KBE_ASSERT(false);
+
+		return;
+	}
+
+	Method* pMethod = sm->idmethods[methodUtype];
+
+	switch(pMethod->methodUtype)
+	{
+		case 47:
+		{
+			ANIM_INFO OnAnimUpdate_arg1;
+			((DATATYPE_ANIM_INFO*)pMethod->args[0])->createFromStreamEx(stream, OnAnimUpdate_arg1);
+			OnAnimUpdate(OnAnimUpdate_arg1);
+			break;
+		}
+		default:
+			break;
+	};
 }
 
 void NPCBase::onUpdatePropertys(MemoryStream& stream)

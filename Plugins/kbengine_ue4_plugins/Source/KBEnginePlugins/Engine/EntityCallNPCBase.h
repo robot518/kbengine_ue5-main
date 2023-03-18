@@ -34,6 +34,7 @@ public:
 	EntityCellEntityCall_NPCBase(int32 eid, const FString& ename);
 
 	virtual ~EntityCellEntityCall_NPCBase();
+	void AnimUpdate(const ANIM_INFO& arg1);
 };
 
 }

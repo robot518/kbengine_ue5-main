@@ -89,7 +89,14 @@ void MonsterBase::onRemoteMethodCall(MemoryStream& stream)
 
 	switch(pMethod->methodUtype)
 	{
-		case 34:
+		case 35:
+		{
+			ANIM_INFO OnAnimUpdate_arg1;
+			((DATATYPE_ANIM_INFO*)pMethod->args[0])->createFromStreamEx(stream, OnAnimUpdate_arg1);
+			OnAnimUpdate(OnAnimUpdate_arg1);
+			break;
+		}
+		case 38:
 		{
 			int32 recvDamage_arg1 = stream.readInt32();
 			int32 recvDamage_arg2 = stream.readInt32();

@@ -24,5 +24,15 @@ EntityCellEntityCall_NPCBase::~EntityCellEntityCall_NPCBase()
 {
 }
 
+void EntityCellEntityCall_NPCBase::AnimUpdate(const ANIM_INFO& arg1)
+{
+	Bundle* pBundleRet = newCall("AnimUpdate", 0);
+	if(!pBundleRet)
+		return;
+
+	//((DATATYPE_ANIM_INFO*)EntityDef::id2datatypes[28])->addToStreamEx(*pBundleRet, arg1);
+	sendCall(NULL);
+}
+
 
 }

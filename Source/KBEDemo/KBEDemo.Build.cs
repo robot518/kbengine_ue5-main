@@ -8,7 +8,7 @@ public class KBEDemo : ModuleRules
 	{
 		PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
 	
-		PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore", "KBEnginePlugins" });
+		PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore", "KBEnginePlugins", "ChaosVehicles" });
 
 		PrivateDependencyModuleNames.AddRange(new string[] { });
 

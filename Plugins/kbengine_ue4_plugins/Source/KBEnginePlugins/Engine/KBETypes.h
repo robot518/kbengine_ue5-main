@@ -56,6 +56,52 @@ typedef FVector3f VECTOR3;
 
 typedef FVector4 VECTOR4;
 
+typedef int32 OBJECT_ID;
+
+typedef uint8 BOOL;
+
+typedef int32 CONTROLLER_ID;
+
+typedef int32 EXPERIENCE;
+
+typedef int32 ITEM_ID;
+
+typedef int32 SKILLID;
+
+typedef int32 QUESTID;
+
+typedef uint64 DBID;
+
+typedef uint64 UID;
+
+typedef TArray<uint8> UID1;
+
+typedef int32 ENTITY_ID;
+
+typedef uint32 ENTITY_NO;
+
+typedef uint32 SPACE_ID;
+
+typedef FVector3f POSITION3D;
+
+typedef FVector3f DIRECTION3D;
+
+typedef uint32 ENTITY_UTYPE;
+
+typedef int32 DAMAGE_TYPE;
+
+typedef int32 ENMITY;
+
+typedef int32 HP;
+
+typedef int32 MP;
+
+typedef int8 ENTITY_STATE;
+
+typedef uint8 ENTITY_SUBSTATE;
+
+typedef int32 ENTITY_FORBIDS;
+
 class ENTITY_FORBID_COUNTER : public TArray<int8>
 {
 public:
@@ -92,9 +138,9 @@ public:
 	int8 param1;
 	TArray<uint8> param2;
 
-	AVATAR_DATA() :
-		param1(0),
-		param2()
+	AVATAR_DATA():
+	param1(0),
+	param2()
 	{
 	}
 
@@ -114,12 +160,12 @@ public:
 	uint16 level;
 	AVATAR_DATA data;
 
-	AVATAR_INFOS() :
-		dbid(0),
-		name(),
-		roleType(0),
-		level(0),
-		data()
+	AVATAR_INFOS():
+	dbid(0),
+	name(),
+	roleType(0),
+	level(0),
+	data()
 	{
 	}
 
@@ -135,8 +181,8 @@ class AVATAR_INFOS_LIST
 public:
 	TArray<AVATAR_INFOS> values;
 
-	AVATAR_INFOS_LIST() :
-		values()
+	AVATAR_INFOS_LIST():
+	values()
 	{
 	}
 
@@ -147,13 +193,32 @@ inline bool operator ==(const AVATAR_INFOS_LIST& a, const AVATAR_INFOS_LIST& b)
 	return a.values == b.values;
 };
 
+class ANIM_INFO
+{
+public:
+	float Speed;
+	float Direction;
+
+	ANIM_INFO():
+	Speed(0.0f),
+	Direction(0.0f)
+	{
+	}
+
+};
+
+inline bool operator ==(const ANIM_INFO& a, const ANIM_INFO& b)
+{
+	return a.Speed == b.Speed && a.Direction == b.Direction;
+};
+
 class BAG
 {
 public:
 	TArray<TArray<int64>> values22;
 
-	BAG() :
-		values22()
+	BAG():
+	values22()
 	{
 	}
 
@@ -170,9 +235,9 @@ public:
 	int64 k1;
 	int64 k2;
 
-	EXAMPLES() :
-		k1(0),
-		k2(0)
+	EXAMPLES():
+	k1(0),
+	k2(0)
 	{
 	}
 

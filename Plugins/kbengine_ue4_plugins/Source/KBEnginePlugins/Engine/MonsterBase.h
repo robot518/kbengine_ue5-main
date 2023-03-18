@@ -55,6 +55,7 @@ public:
 	uint32 utype;
 	virtual void onUtypeChanged(uint32 oldValue) {}
 
+	virtual void OnAnimUpdate(const ANIM_INFO& arg1) = 0; 
 	virtual void recvDamage(int32 arg1, int32 arg2, int32 arg3, int32 arg4) = 0; 
 
 	void onComponentsEnterworld() override;

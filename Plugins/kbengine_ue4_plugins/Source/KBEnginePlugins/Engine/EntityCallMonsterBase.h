@@ -34,6 +34,7 @@ public:
 	EntityCellEntityCall_MonsterBase(int32 eid, const FString& ename);
 
 	virtual ~EntityCellEntityCall_MonsterBase();
+	void AnimUpdate(const ANIM_INFO& arg1);
 };
 
 }

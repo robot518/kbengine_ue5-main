@@ -58,7 +58,7 @@ void TestNoBaseBase::onRemoteMethodCall(uint16 methodUtype, MemoryStream& stream
 
 	switch(pMethod->methodUtype)
 	{
-		case 30:
+		case 32:
 		{
 			int32 helloCB_arg1 = stream.readInt32();
 			helloCB(helloCB_arg1);

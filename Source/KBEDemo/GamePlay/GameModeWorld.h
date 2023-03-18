@@ -164,7 +164,32 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "KBEngine")
 		void removeGameEntity(int entityID);
 
+	UFUNCTION(BlueprintCallable, Category = "KBEngine")
+		AHoverCarSpawn* findHoverCarEntity(int entityID);
+
+	UFUNCTION(BlueprintCallable, Category = "KBEngine")
+		void addHoverCarEntity(int entityID, AHoverCarSpawn* entity);
+
+	UFUNCTION(BlueprintCallable, Category = "KBEngine")
+		void removeHoverCarEntity(int entityID);
+
+	UFUNCTION(BlueprintCallable, Category = "KBEngine")
+		ACarPawn* findCarEntity(int entityID);
+
+	UFUNCTION(BlueprintCallable, Category = "KBEngine")
+		void addCarEntity(int entityID, ACarPawn* entity);
+
+	UFUNCTION(BlueprintCallable, Category = "KBEngine")
+		void removeCarEntity(int entityID);
+
+	UFUNCTION(BlueprintCallable, Category = "KBEngine")
+		void OnAnimUpdate(const UKBEventData* EventData);
+
 	TMap<ENTITY_ID, AGameEntity*> gameEntities;
+
+	TMap<ENTITY_ID, AHoverCarSpawn*> hoverCarEntities;
+
+	TMap<ENTITY_ID, ACarPawn*> carEntities;
 
 	// 在编辑器中配置相关类
 	UPROPERTY(EditDefaultsOnly, Category = KBEngine)
@@ -173,4 +198,20 @@ public:
 	// 在编辑器中配置相关类
 	UPROPERTY(EditDefaultsOnly, Category = KBEngine)
 		TArray<TSubclassOf<class APlayerCharacter>> PlayerCharacterClassArray;
+
+	// 在编辑器中配置相关类
+	UPROPERTY(EditDefaultsOnly, Category = KBEngine)
+		TArray<TSubclassOf<class AHoverCarSpawn>> HoverCarSpawnClassArray;
+
+	// 在编辑器中配置相关类
+	UPROPERTY(EditDefaultsOnly, Category = KBEngine)
+		TArray<TSubclassOf<class AHoverPlayerCarSpawn>> HoverPlayerCarSpawnClassArray;
+
+	// 在编辑器中配置相关类
+	UPROPERTY(EditDefaultsOnly, Category = KBEngine)
+		TArray<TSubclassOf<class ACarPawn>> CarPawnClassArray;
+
+	// 在编辑器中配置相关类
+	UPROPERTY(EditDefaultsOnly, Category = KBEngine)
+		TArray<TSubclassOf<class APlayerCarPawn>> PlayerCarPawnClassArray;
 };

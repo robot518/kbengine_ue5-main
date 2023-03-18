@@ -25,7 +25,6 @@ public:
 	EntityBaseEntityCall_AccountBase(int32 eid, const FString& ename);
 
 	virtual ~EntityBaseEntityCall_AccountBase();
-
 	void reqAvatarList();
 	void reqCreateAvatar(uint8 arg1, const FString& arg2);
 	void reqRemoveAvatar(const FString& arg1);

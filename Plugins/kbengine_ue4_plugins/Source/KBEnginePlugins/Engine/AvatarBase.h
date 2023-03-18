@@ -67,6 +67,7 @@ public:
 	uint32 utype;
 	virtual void onUtypeChanged(uint32 oldValue) {}
 
+	virtual void OnAnimUpdate(const ANIM_INFO& arg1) = 0; 
 	virtual void dialog_addOption(uint8 arg1, uint32 arg2, const FString& arg3, int32 arg4) = 0; 
 	virtual void dialog_close() = 0; 
 	virtual void dialog_setText(const FString& arg1, uint8 arg2, uint32 arg3, const FString& arg4) = 0; 

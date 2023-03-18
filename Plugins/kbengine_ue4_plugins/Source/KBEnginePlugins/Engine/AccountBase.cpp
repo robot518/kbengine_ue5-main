@@ -78,7 +78,7 @@ void AccountBase::onRemoteMethodCall(MemoryStream& stream)
 		methodUtype = stream.read<uint16>();
 	}
 
-	if (componentPropertyUType > 0)
+	if(componentPropertyUType > 0)
 	{
 		KBE_ASSERT(false);
 
@@ -87,31 +87,31 @@ void AccountBase::onRemoteMethodCall(MemoryStream& stream)
 
 	Method* pMethod = sm->idmethods[methodUtype];
 
-	switch (pMethod->methodUtype)
+	switch(pMethod->methodUtype)
 	{
-	case 10005:
-	{
-		uint8 onCreateAvatarResult_arg1 = stream.readUint8();
-		AVATAR_INFOS onCreateAvatarResult_arg2;
-		((DATATYPE_AVATAR_INFOS*)pMethod->args[1])->createFromStreamEx(stream, onCreateAvatarResult_arg2);
-		onCreateAvatarResult(onCreateAvatarResult_arg1, onCreateAvatarResult_arg2);
-		break;
-	}
-	case 3:
-	{
-		uint64 onRemoveAvatar_arg1 = stream.readUint64();
-		onRemoveAvatar(onRemoveAvatar_arg1);
-		break;
-	}
-	case 10003:
-	{
-		AVATAR_INFOS_LIST onReqAvatarList_arg1;
-		((DATATYPE_AVATAR_INFOS_LIST*)pMethod->args[0])->createFromStreamEx(stream, onReqAvatarList_arg1);
-		onReqAvatarList(onReqAvatarList_arg1);
-		break;
-	}
-	default:
-		break;
+		case 10005:
+		{
+			uint8 onCreateAvatarResult_arg1 = stream.readUint8();
+			AVATAR_INFOS onCreateAvatarResult_arg2;
+			((DATATYPE_AVATAR_INFOS*)pMethod->args[1])->createFromStreamEx(stream, onCreateAvatarResult_arg2);
+			onCreateAvatarResult(onCreateAvatarResult_arg1, onCreateAvatarResult_arg2);
+			break;
+		}
+		case 3:
+		{
+			uint64 onRemoveAvatar_arg1 = stream.readUint64();
+			onRemoveAvatar(onRemoveAvatar_arg1);
+			break;
+		}
+		case 10003:
+		{
+			AVATAR_INFOS_LIST onReqAvatarList_arg1;
+			((DATATYPE_AVATAR_INFOS_LIST*)pMethod->args[0])->createFromStreamEx(stream, onReqAvatarList_arg1);
+			onReqAvatarList(onReqAvatarList_arg1);
+			break;
+		}
+		default:
+			break;
 	};
 }
 
@@ -169,14 +169,14 @@ void AccountBase::onUpdatePropertys(MemoryStream& stream)
 				uint64 oldval_lastSelCharacter = lastSelCharacter;
 				lastSelCharacter = stream.readUint64();
 
-				if (pProp->isBase())
+				if(pProp->isBase())
 				{
-					if (inited())
+					if(inited())
 						onLastSelCharacterChanged(oldval_lastSelCharacter);
 				}
 				else
 				{
-					if (inWorld())
+					if(inWorld())
 						onLastSelCharacterChanged(oldval_lastSelCharacter);
 				}
 
@@ -239,16 +239,16 @@ void AccountBase::callPropertysSetMethods()
 
 	uint64 oldval_lastSelCharacter = lastSelCharacter;
 	Property* pProp_lastSelCharacter = pdatas[4];
-	if (pProp_lastSelCharacter->isBase())
+	if(pProp_lastSelCharacter->isBase())
 	{
-		if (inited() && !inWorld())
+		if(inited() && !inWorld())
 			onLastSelCharacterChanged(oldval_lastSelCharacter);
 	}
 	else
 	{
-		if (inWorld())
+		if(inWorld())
 		{
-			if (pProp_lastSelCharacter->isOwnerOnly() && !isPlayer())
+			if(pProp_lastSelCharacter->isOwnerOnly() && !isPlayer())
 			{
 			}
 			else

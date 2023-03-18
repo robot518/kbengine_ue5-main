@@ -1,5 +1,6 @@
 #include "EntityCallAvatarBase.h"
 #include "Bundle.h"
+#include "EntityDef.h"
 
 namespace KBEngine
 {
@@ -46,6 +47,16 @@ EntityCellEntityCall_AvatarBase::~EntityCellEntityCall_AvatarBase()
 	if(component3)
 		delete component3;
 
+}
+
+void EntityCellEntityCall_AvatarBase::AnimUpdate(const ANIM_INFO& arg1)
+{
+	Bundle* pBundleRet = newCall("AnimUpdate", 0);
+	if(!pBundleRet)
+		return;
+
+	((DATATYPE_ANIM_INFO*)EntityDef::id2datatypes[28])->addToStreamEx(*pBundleRet, arg1);
+	sendCall(NULL);
 }
 
 void EntityCellEntityCall_AvatarBase::dialog(int32 arg1, uint32 arg2)

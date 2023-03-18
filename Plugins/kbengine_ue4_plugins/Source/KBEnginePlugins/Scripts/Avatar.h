@@ -52,6 +52,8 @@ public:
 	void onJump() override;
 	void onRemoveSkill(int32 arg1) override;
 	void recvDamage(int32 arg1, int32 arg2, int32 arg3, int32 arg4) override;
+
+	virtual void OnAnimUpdate(const ANIM_INFO& arg1) override;
 };
 
 }

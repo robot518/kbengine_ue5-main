@@ -42,6 +42,7 @@ public:
 	EntityCellEntityCall_AvatarBase(int32 eid, const FString& ename);
 
 	virtual ~EntityCellEntityCall_AvatarBase();
+	void AnimUpdate(const ANIM_INFO& arg1);
 	void dialog(int32 arg1, uint32 arg2);
 	void jump();
 	void relive(uint8 arg1);

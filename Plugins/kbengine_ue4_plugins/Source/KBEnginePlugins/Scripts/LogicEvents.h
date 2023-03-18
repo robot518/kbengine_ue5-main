@@ -318,3 +318,33 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = KBEngine)
 	int entityID;
 };
+
+UCLASS(Blueprintable, BlueprintType)
+class KBENGINEPLUGINS_API UKBEventData_OnAnimUpdate : public UKBEventData
+{
+	GENERATED_BODY()
+
+public:
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = KBEngine)
+		int32 EntityId;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = KBEngine)
+		float Speed;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = KBEngine)
+		float Direction;
+};
+
+UCLASS(Blueprintable, BlueprintType)
+class KBENGINEPLUGINS_API UKBEventData_AnimUpdate : public UKBEventData
+{
+	GENERATED_BODY()
+
+public:
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = KBEngine)
+		float Speed;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = KBEngine)
+		float Direction;
+};

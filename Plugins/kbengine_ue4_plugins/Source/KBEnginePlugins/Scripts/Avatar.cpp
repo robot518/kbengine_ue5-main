@@ -24,6 +24,15 @@ void Avatar::__init__()
 			const UKBEventData_reqRelive& data = static_cast<const UKBEventData_reqRelive&>(*pEventData);
 			reqRelive(data.reliveType);
 		});
+
+		KBENGINE_REGISTER_EVENT_OVERRIDE_FUNC("AnimUpdate", "AnimUpdate", [this](const UKBEventData* pEventData)
+		{
+			const UKBEventData_AnimUpdate& data = static_cast<const UKBEventData_AnimUpdate&>(*pEventData);
+			ANIM_INFO AnimInfo;
+			AnimInfo.Speed = data.Speed;
+			AnimInfo.Direction = data.Direction;
+			pCellEntityCall->AnimUpdate(AnimInfo);
+		});
 	}
 }
 
@@ -86,6 +95,15 @@ void Avatar::recvDamage(int32 arg1, int32 arg2, int32 arg3, int32 arg4)
 	pEventData->damage = arg4;
 	pEventData->entityID = id();
 	KBENGINE_EVENT_FIRE("recvDamage", pEventData);
+}
+
+void Avatar::OnAnimUpdate(const ANIM_INFO& arg1)
+{
+	UKBEventData_OnAnimUpdate* pEventData = NewObject<UKBEventData_OnAnimUpdate>();
+	pEventData->EntityId = id();
+	pEventData->Speed = arg1.Speed;
+	pEventData->Direction = arg1.Direction;
+	KBENGINE_EVENT_FIRE("OnAnimUpdate", pEventData);
 }
 
 void Avatar::onHPChanged(int32 oldValue)
