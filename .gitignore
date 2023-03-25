@@ -74,3 +74,6 @@ Plugins/*/Intermediate/*
 DerivedDataCache/*
 
 Content/StarterContent/*
+
+server_assets/logs/
+__pycache__
