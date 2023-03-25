@@ -539,7 +539,7 @@ void KBEngineApp::Client_onHelloCB(MemoryStream& stream)
 		}
 		*/
 
-		if(serverEntitydefMD5_ != serverEntitydefMD5)
+		/*if(serverEntitydefMD5_ != serverEntitydefMD5)
 		{
 			ERROR_MSG("KBEngineApp::Client_onHelloCB():  digest not match! serverEntitydefMD5=%s(server: %s)", *serverEntitydefMD5_, *serverEntitydefMD5);
 
@@ -548,7 +548,7 @@ void KBEngineApp::Client_onHelloCB(MemoryStream& stream)
 			pEventData->serverVersion = serverVersion_;
 			KBENGINE_EVENT_FIRE(KBEventTypes::onVersionNotMatch, pEventData);
 			return;
-		}
+		}*/
 	}
 
 	if (pArgs_->networkEncryptType == NETWORK_ENCRYPT_TYPE::ENCRYPT_TYPE_BLOWFISH)

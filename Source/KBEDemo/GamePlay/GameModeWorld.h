@@ -173,15 +173,6 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "KBEngine")
 		void removeHoverCarEntity(int entityID);
 
-	UFUNCTION(BlueprintCallable, Category = "KBEngine")
-		ACarPawn* findCarEntity(int entityID);
-
-	UFUNCTION(BlueprintCallable, Category = "KBEngine")
-		void addCarEntity(int entityID, ACarPawn* entity);
-
-	UFUNCTION(BlueprintCallable, Category = "KBEngine")
-		void removeCarEntity(int entityID);
-
 	void OnAnimUpdate(const UKBEventData* EventData);
 
 	void OnHoverCarMoveSpeedUpdate(const UKBEventData* EventData);
@@ -189,8 +180,6 @@ public:
 	TMap<ENTITY_ID, AGameEntity*> gameEntities;
 
 	TMap<ENTITY_ID, AHoverCarSpawn*> hoverCarEntities;
-
-	TMap<ENTITY_ID, ACarPawn*> carEntities;
 
 	// 在编辑器中配置相关类
 	UPROPERTY(EditDefaultsOnly, Category = KBEngine)
@@ -208,11 +197,6 @@ public:
 	UPROPERTY(EditDefaultsOnly, Category = KBEngine)
 		TArray<TSubclassOf<class AHoverPlayerCarSpawn>> HoverPlayerCarSpawnClassArray;
 
-	// 在编辑器中配置相关类
-	UPROPERTY(EditDefaultsOnly, Category = KBEngine)
-		TArray<TSubclassOf<class ACarPawn>> CarPawnClassArray;
-
-	// 在编辑器中配置相关类
-	UPROPERTY(EditDefaultsOnly, Category = KBEngine)
-		TArray<TSubclassOf<class APlayerCarPawn>> PlayerCarPawnClassArray;
+	UPROPERTY(BlueprintReadWrite, Category = KBEngine)
+		int iType;
 };

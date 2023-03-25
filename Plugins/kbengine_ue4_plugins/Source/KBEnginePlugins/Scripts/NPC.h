@@ -23,6 +23,9 @@ public:
 	virtual void onUidChanged(uint32 oldValue) override;
 	virtual void onUtypeChanged(uint32 oldValue) override;
 
+	virtual void OnAnimUpdate(const ANIM_INFO& arg1) override;
+	virtual void OnHoverCarMoveSpeedUpdate(const HOVERCAR_INFO& arg1) override;
+
 };
 
 }

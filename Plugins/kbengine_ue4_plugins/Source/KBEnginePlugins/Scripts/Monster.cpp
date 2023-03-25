@@ -133,4 +133,12 @@ void Monster::onUtypeChanged(uint32 oldValue)
 
 }
 
+void Monster::OnAnimUpdate(const ANIM_INFO& arg1)
+{
+}
+
+void Monster::OnHoverCarMoveSpeedUpdate(const HOVERCAR_INFO& arg1)
+{
+}
+
 }

@@ -45,7 +45,7 @@ void AHoverCarSpawn::Destroyed()
 	if (XGameMode)
 	{
 		// 把自己注册到AGameModeWorld，方便后面查找
-		XGameMode->removeCarEntity(this->entityID);
+		XGameMode->removeHoverCarEntity(this->entityID);
 	}
 }
 

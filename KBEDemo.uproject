@@ -26,10 +26,6 @@
 			"Name": "KBEnginePlugins",
 			"Enabled": true,
 			"MarketplaceURL": "http://kbengine.org/marketplace"
-		},
-		{
-			"Name": "ChaosVehiclesPlugin",
-			"Enabled": true
 		}
 	]
 }

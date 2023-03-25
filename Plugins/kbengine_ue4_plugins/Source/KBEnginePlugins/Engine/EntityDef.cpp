@@ -105,10 +105,10 @@ Entity* EntityDef::createEntity(int utype)
 			pEntity = new Avatar();
 			break;
 		case 5:
-			//pEntity = new Monster();
+			pEntity = new Monster();
 			break;
 		case 6:
-			//pEntity = new NPC();
+			pEntity = new NPC();
 			break;
 		case 7:
 			pEntity = new Gate();

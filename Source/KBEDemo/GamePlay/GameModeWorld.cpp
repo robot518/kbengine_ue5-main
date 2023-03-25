@@ -6,8 +6,6 @@
 #include "KBEnginePlugins/Engine/Entity.h"
 #include "../Entity/HoverCarSpawn.h"
 #include "../Entity/HoverPlayerCarSpawn.h"
-#include "../Entity/CarPawn.h"
-#include "../Entity/PlayerCarPawn.h"
 
 // 设置默认值
 AGameModeWorld::AGameModeWorld()
@@ -145,25 +143,6 @@ void AGameModeWorld::removeHoverCarEntity(int entityID)
 	hoverCarEntities.Remove(entityID);
 }
 
-ACarPawn* AGameModeWorld::findCarEntity(int entityID)
-{
-	ACarPawn** pGameEntity = carEntities.Find(entityID);
-	if (pGameEntity)
-		return *pGameEntity;
-
-	return NULL;
-}
-
-void AGameModeWorld::addCarEntity(int entityID, ACarPawn* entity)
-{
-	carEntities.Add(entityID, entity);
-}
-
-void AGameModeWorld::removeCarEntity(int entityID)
-{
-	carEntities.Remove(entityID);
-}
-
 void AGameModeWorld::OnAnimUpdate(const UKBEventData* EventData)
 {
 	const UKBEventData_OnAnimUpdate* data = Cast<UKBEventData_OnAnimUpdate>(EventData);
@@ -197,56 +176,53 @@ void AGameModeWorld::onEnterWorld_Implementation(const UKBEventData* pEventData)
 
 	if (pData->isPlayer)
 	{
-		/*TSubclassOf<class APlayerCharacter>& APlayerCharacterClass = PlayerCharacterClassArray[0];
-		auto DeferredActor = Cast<APlayerCharacter>(UGameplayStatics::BeginDeferredActorSpawnFromClass(this, APlayerCharacterClass, SpawnTransform));
-		if (DeferredActor != nullptr)
+		if (iType == 0)
 		{
-			DeferredActor->entityID = pData->entityID;
-			DeferredActor->moveSpeed = pData->moveSpeed;
-			UGameplayStatics::FinishSpawningActor(DeferredActor, SpawnTransform);
-		}*/
-		/*TSubclassOf<class APlayerCarPawn>& APlayerCarPawnClass = PlayerCarPawnClassArray[0];
-		auto DeferredActor = Cast<ACarPawn>(UGameplayStatics::BeginDeferredActorSpawnFromClass(this, APlayerCarPawnClass, SpawnTransform));
-		if (DeferredActor != nullptr)
-		{
-			DeferredActor->entityID = pData->entityID;
-			DeferredActor->moveSpeed = pData->moveSpeed;
-			UGameplayStatics::FinishSpawningActor(DeferredActor, SpawnTransform);
-		}*/
-		TSubclassOf<class AHoverPlayerCarSpawn>& APlayerCarPawnClass = HoverPlayerCarSpawnClassArray[0];
-		auto DeferredActor = Cast<AHoverCarSpawn>(UGameplayStatics::BeginDeferredActorSpawnFromClass(this, APlayerCarPawnClass, SpawnTransform));
-		if (DeferredActor != nullptr)
-		{
-			DeferredActor->entityID = pData->entityID;
-			DeferredActor->moveSpeed = pData->moveSpeed;
-			UGameplayStatics::FinishSpawningActor(DeferredActor, SpawnTransform);
+			TSubclassOf<class APlayerCharacter>& APlayerCharacterClass = PlayerCharacterClassArray[0];
+			auto DeferredActor = Cast<APlayerCharacter>(UGameplayStatics::BeginDeferredActorSpawnFromClass(this, APlayerCharacterClass, SpawnTransform));
+			if (DeferredActor != nullptr)
+			{
+				DeferredActor->entityID = pData->entityID;
+				DeferredActor->moveSpeed = pData->moveSpeed;
+				UGameplayStatics::FinishSpawningActor(DeferredActor, SpawnTransform);
+			}
 		}
+		else if (iType == 1) 
+		{
+			TSubclassOf<class AHoverPlayerCarSpawn>& APlayerCarPawnClass = HoverPlayerCarSpawnClassArray[0];
+			auto DeferredActor = Cast<AHoverCarSpawn>(UGameplayStatics::BeginDeferredActorSpawnFromClass(this, APlayerCarPawnClass, SpawnTransform));
+			if (DeferredActor != nullptr)
+			{
+				DeferredActor->entityID = pData->entityID;
+				DeferredActor->moveSpeed = pData->moveSpeed;
+				UGameplayStatics::FinishSpawningActor(DeferredActor, SpawnTransform);
+			}
+		}
+		
 	}
 	else
 	{
-		/*TSubclassOf<class AGameEntity>& AGameEntityClass = GameEntityClassArray[0];
-		auto DeferredActor = Cast<AGameEntity>(UGameplayStatics::BeginDeferredActorSpawnFromClass(this, AGameEntityClass, SpawnTransform));
-		if (DeferredActor != nullptr)
+		if (iType == 0)
 		{
-			DeferredActor->entityID = pData->entityID;
-			DeferredActor->moveSpeed = pData->moveSpeed;
-			UGameplayStatics::FinishSpawningActor(DeferredActor, SpawnTransform);
-		}*/
-		/*TSubclassOf<class ACarPawn>& ACarPawnClass = CarPawnClassArray[0];
-		auto DeferredActor = Cast<ACarPawn>(UGameplayStatics::BeginDeferredActorSpawnFromClass(this, ACarPawnClass, SpawnTransform));
-		if (DeferredActor != nullptr)
+			TSubclassOf<class AGameEntity>& AGameEntityClass = GameEntityClassArray[0];
+			auto DeferredActor = Cast<AGameEntity>(UGameplayStatics::BeginDeferredActorSpawnFromClass(this, AGameEntityClass, SpawnTransform));
+			if (DeferredActor != nullptr)
+			{
+				DeferredActor->entityID = pData->entityID;
+				DeferredActor->moveSpeed = pData->moveSpeed;
+				UGameplayStatics::FinishSpawningActor(DeferredActor, SpawnTransform);
+			}
+		}
+		else if (iType == 1)
 		{
-			DeferredActor->entityID = pData->entityID;
-			DeferredActor->moveSpeed = pData->moveSpeed;
-			UGameplayStatics::FinishSpawningActor(DeferredActor, SpawnTransform);
-		}*/
-		TSubclassOf<class AHoverCarSpawn>& ACarPawnClass = HoverCarSpawnClassArray[0];
-		auto DeferredActor = Cast<AHoverCarSpawn>(UGameplayStatics::BeginDeferredActorSpawnFromClass(this, ACarPawnClass, SpawnTransform));
-		if (DeferredActor != nullptr)
-		{
-			DeferredActor->entityID = pData->entityID;
-			DeferredActor->moveSpeed = pData->moveSpeed;
-			UGameplayStatics::FinishSpawningActor(DeferredActor, SpawnTransform);
+			TSubclassOf<class AHoverCarSpawn>& ACarPawnClass = HoverCarSpawnClassArray[0];
+			auto DeferredActor = Cast<AHoverCarSpawn>(UGameplayStatics::BeginDeferredActorSpawnFromClass(this, ACarPawnClass, SpawnTransform));
+			if (DeferredActor != nullptr)
+			{
+				DeferredActor->entityID = pData->entityID;
+				DeferredActor->moveSpeed = pData->moveSpeed;
+				UGameplayStatics::FinishSpawningActor(DeferredActor, SpawnTransform);
+			}
 		}
 	}
 }
@@ -254,13 +230,21 @@ void AGameModeWorld::onEnterWorld_Implementation(const UKBEventData* pEventData)
 void AGameModeWorld::onLeaveWorld_Implementation(const UKBEventData* pEventData)
 {
 	const UKBEventData_onLeaveWorld* pData = Cast<UKBEventData_onLeaveWorld>(pEventData);
-	//AGameEntity* pAGameEntity = findGameEntity(pData->entityID);
-	//ACarPawn* pAGameEntity = findCarEntity(pData->entityID);
-	AHoverCarSpawn* pAGameEntity = findHoverCarEntity(pData->entityID);
-
-	if (pAGameEntity)
+	if (iType == 0)
 	{
-		pAGameEntity->Destroy();
+		AGameEntity* pAGameEntity = findGameEntity(pData->entityID);
+		if (pAGameEntity)
+		{
+			pAGameEntity->Destroy();
+		}
+	}
+	else if (iType == 1)
+	{
+		AHoverCarSpawn* pAGameEntity = findHoverCarEntity(pData->entityID);
+		if (pAGameEntity)
+		{
+			pAGameEntity->Destroy();
+		}
 	}
 }
 
@@ -303,43 +287,69 @@ void AGameModeWorld::onLeaveSpace_Implementation(const UKBEventData* pEventData)
 void AGameModeWorld::set_position_Implementation(const UKBEventData* pEventData)
 {
 	const UKBEventData_set_position* pData = Cast<UKBEventData_set_position>(pEventData);
-	//AGameEntity* pAGameEntity = findGameEntity(pData->entityID);
-	//ACarPawn* pAGameEntity = findCarEntity(pData->entityID);
-	AHoverCarSpawn* pAGameEntity = findHoverCarEntity(pData->entityID);
-
-	if (pAGameEntity)
+	if (iType == 0)
 	{
-		//pAGameEntity->SetActorLocation((FVector)pData->position);
-		pAGameEntity->SetActorLocation((FVector)pData->position, false, nullptr, ETeleportType::TeleportPhysics);
-		pAGameEntity->setTargetLocation((FVector)pData->position);
-		pAGameEntity->setIsOnGround(pData->isOnGround);
+		AGameEntity* pAGameEntity = findGameEntity(pData->entityID);
+		if (pAGameEntity)
+		{
+			pAGameEntity->SetActorLocation((FVector)pData->position);
+			pAGameEntity->setTargetLocation((FVector)pData->position);
+			pAGameEntity->setIsOnGround(pData->isOnGround);
+		}
+	}
+	else if (iType == 1)
+	{
+		AHoverCarSpawn* pAGameEntity = findHoverCarEntity(pData->entityID);
+		if (pAGameEntity)
+		{
+			pAGameEntity->SetActorLocation((FVector)pData->position);
+			pAGameEntity->setTargetLocation((FVector)pData->position);
+			pAGameEntity->setIsOnGround(pData->isOnGround);
+		}
 	}
 }
 
 void AGameModeWorld::set_direction_Implementation(const UKBEventData* pEventData)
 {
 	const UKBEventData_set_direction* pData = Cast<UKBEventData_set_direction>(pEventData);
-	//AGameEntity* pAGameEntity = findGameEntity(pData->entityID);
-	//ACarPawn* pAGameEntity = findCarEntity(pData->entityID);
-	AHoverCarSpawn* pAGameEntity = findHoverCarEntity(pData->entityID);
-
-	if (pAGameEntity)
+	if (iType == 0)
 	{
-		pAGameEntity->setTargetRotator((FRotator3f)pData->direction);
+		AGameEntity* pAGameEntity = findGameEntity(pData->entityID);
+		if (pAGameEntity)
+		{
+			pAGameEntity->setTargetRotator((FRotator3f)pData->direction);
+		}
+	}
+	else if (iType == 1)
+	{
+		AHoverCarSpawn* pAGameEntity = findHoverCarEntity(pData->entityID);
+		if (pAGameEntity)
+		{
+			pAGameEntity->setTargetRotator((FRotator3f)pData->direction);
+		}
 	}
 }
 
 void AGameModeWorld::updatePosition_Implementation(const UKBEventData* pEventData)
 {
 	const UKBEventData_updatePosition* pData = Cast<UKBEventData_updatePosition>(pEventData);
-	//AGameEntity* pAGameEntity = findGameEntity(pData->entityID);
-	//ACarPawn* pAGameEntity = findCarEntity(pData->entityID);
-	AHoverCarSpawn* pAGameEntity = findHoverCarEntity(pData->entityID);
-
-	if (pAGameEntity)
+	if (iType == 0)
 	{
-		pAGameEntity->setTargetLocation((FVector)pData->position);
-		pAGameEntity->setIsOnGround(pData->isOnGround);
+		AGameEntity* pAGameEntity = findGameEntity(pData->entityID);
+		if (pAGameEntity)
+		{
+			pAGameEntity->setTargetLocation((FVector)pData->position);
+			pAGameEntity->setIsOnGround(pData->isOnGround);
+		}
+	}
+	else if (iType == 1)
+	{
+		AHoverCarSpawn* pAGameEntity = findHoverCarEntity(pData->entityID);
+		if (pAGameEntity)
+		{
+			pAGameEntity->setTargetLocation((FVector)pData->position);
+			pAGameEntity->setIsOnGround(pData->isOnGround);
+		}
 	}
 }
 
@@ -381,11 +391,18 @@ void AGameModeWorld::set_name_Implementation(const UKBEventData* pEventData)
 void AGameModeWorld::set_moveSpeed_Implementation(const UKBEventData* pEventData)
 {
 	const UKBEventData_set_moveSpeed* pData = Cast<UKBEventData_set_moveSpeed>(pEventData);
-	//AGameEntity* pAGameEntity = findGameEntity(pData->entityID);
-	AHoverCarSpawn* pAGameEntity = findHoverCarEntity(pData->entityID);
-
-	if (pAGameEntity)
-		pAGameEntity->moveSpeed = pData->moveSpeed;
+	if (iType == 0)
+	{
+		AGameEntity* pAGameEntity = findGameEntity(pData->entityID);
+		if (pAGameEntity)
+			pAGameEntity->moveSpeed = pData->moveSpeed;
+	}
+	else if (iType == 1)
+	{
+		AHoverCarSpawn* pAGameEntity = findHoverCarEntity(pData->entityID);
+		if (pAGameEntity)
+			pAGameEntity->moveSpeed = pData->moveSpeed;
+	}
 }
 
 void AGameModeWorld::set_modelScale_Implementation(const UKBEventData* pEventData)

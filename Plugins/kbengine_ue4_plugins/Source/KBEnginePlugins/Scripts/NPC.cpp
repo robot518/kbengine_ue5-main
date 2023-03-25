@@ -66,4 +66,12 @@ void NPC::onUtypeChanged(uint32 oldValue)
 
 }
 
+void NPC::OnAnimUpdate(const ANIM_INFO& arg1)
+{
+}
+
+void NPC::OnHoverCarMoveSpeedUpdate(const HOVERCAR_INFO& arg1)
+{
+}
+
 }
