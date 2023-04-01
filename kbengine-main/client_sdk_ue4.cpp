@@ -2244,7 +2244,7 @@ bool ClientSDKUE4::writeEntityModuleBegin(ScriptDefModule* pEntityScriptDefModul
 			if (includesHistroy.find(pEntityComponentType->pScriptDefModule()->getName()) != includesHistroy.end())
 				continue;
 
-			fileBody() += fmt::format("#include \"Scripts/Components/{}.h\"\n\n", pEntityComponentType->pScriptDefModule()->getName());
+			fileBody() += fmt::format("#include \"../Scripts/Components/{}.h\"\n\n", pEntityComponentType->pScriptDefModule()->getName());
 			includesHistroy[pEntityComponentType->pScriptDefModule()->getName()] = pPropertyDescription;
 		}
 
