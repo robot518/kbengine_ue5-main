@@ -99,7 +99,7 @@ void AGameEntity::OnOverlapBegin(UPrimitiveComponent* OverlapedComponent, AActor
 {
 	if (OtherActor->GetFName().IsEqual(GroundName)) 
 	{
-		AnimIsInAir = false;
+		//AnimIsInAir = false;
 	}
 }
 
@@ -107,7 +107,7 @@ void AGameEntity::OnOverlapEnd(UPrimitiveComponent* OverlapedComponent, AActor* 
 {
 	if (OtherActor->GetFName().IsEqual(GroundName))
 	{
-		AnimIsInAir = true;
+		//AnimIsInAir = true;
 	}
 }
 

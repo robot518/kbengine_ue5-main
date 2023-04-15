@@ -69,6 +69,7 @@ void APlayerCharacter::Tick(float DeltaTime)
 
 	AnimSpeed = GetVelocity().Size();
 	AnimIsInAir = GetMovementComponent()->IsFalling();
+	//isOnGround = 
 
 	float PreDir = GetVelocity().ToOrientationRotator().Yaw - GetActorRotation().Yaw;
 
