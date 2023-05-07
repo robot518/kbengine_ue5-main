@@ -36,8 +36,8 @@ void UKBETicker::Tick(float DeltaTime)
 		UE4Pos2KBPos(kbe_player->position, FVector3f(player_location.X, player_location.Y, player_location.Z));
 		UE4Dir2KBDir(kbe_player->direction, ue4_player->GetActorRotation());
 
-		kbe_player->isOnGround(ue4_player->GetMovementComponent() && ue4_player->GetMovementComponent()->IsMovingOnGround());
-	}
+		//kbe_player->isOnGround(ue4_player->GetMovementComponent() && ue4_player->GetMovementComponent()->IsMovingOnGround());
+	} 
 
 	KBEngine::KBEngineApp::getSingleton().process();
 }
