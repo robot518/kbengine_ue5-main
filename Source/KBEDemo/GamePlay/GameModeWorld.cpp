@@ -179,12 +179,14 @@ void AGameModeWorld::onEnterWorld_Implementation(const UKBEventData* pEventData)
 		if (iType == 0)
 		{
 			TSubclassOf<class APlayerCharacter>& APlayerCharacterClass = PlayerCharacterClassArray[0];
-			auto DeferredActor = Cast<APlayerCharacter>(UGameplayStatics::BeginDeferredActorSpawnFromClass(this, APlayerCharacterClass, SpawnTransform));
+			auto DeferredActor = Cast<APlayerCharacter>(UGameplayStatics::BeginDeferredActorSpawnFromClass(this, APlayerCharacterClass, SpawnTransform, ESpawnActorCollisionHandlingMethod::AdjustIfPossibleButAlwaysSpawn));
 			if (DeferredActor != nullptr)
 			{
 				DeferredActor->entityID = pData->entityID;
 				DeferredActor->moveSpeed = pData->moveSpeed;
+				//DeferredActor->SetActorEnableCollision(false);
 				UGameplayStatics::FinishSpawningActor(DeferredActor, SpawnTransform);
+				//DeferredActor->SetActorEnableCollision(true);
 			}
 		}
 		else if (iType == 1) 
@@ -205,12 +207,14 @@ void AGameModeWorld::onEnterWorld_Implementation(const UKBEventData* pEventData)
 		if (iType == 0)
 		{
 			TSubclassOf<class AGameEntity>& AGameEntityClass = GameEntityClassArray[0];
-			auto DeferredActor = Cast<AGameEntity>(UGameplayStatics::BeginDeferredActorSpawnFromClass(this, AGameEntityClass, SpawnTransform));
+			auto DeferredActor = Cast<AGameEntity>(UGameplayStatics::BeginDeferredActorSpawnFromClass(this, AGameEntityClass, SpawnTransform, ESpawnActorCollisionHandlingMethod::AdjustIfPossibleButAlwaysSpawn));
 			if (DeferredActor != nullptr)
 			{
 				DeferredActor->entityID = pData->entityID;
 				DeferredActor->moveSpeed = pData->moveSpeed;
+				//DeferredActor->SetActorEnableCollision(false);
 				UGameplayStatics::FinishSpawningActor(DeferredActor, SpawnTransform);
+				//DeferredActor->SetActorEnableCollision(true);
 			}
 		}
 		else if (iType == 1)
